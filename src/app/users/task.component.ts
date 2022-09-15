@@ -3,7 +3,6 @@ import {TaskService} from "./task.service";
 import {taskModel} from "./taskModel";
 import {MatTableDataSource} from "@angular/material/table";
 
-
 @Component({
   selector: 'app-users',
   templateUrl: './task.component.html',
@@ -13,28 +12,24 @@ export class TaskComponent implements OnInit {
 
   public columnsToDisplay = ['taskName', 'editTaskName', 'editButton1', 'taskDescription', 'editTaskDescription', 'editButton2', 'taskId', 'deleteButton']
   dataSource = new MatTableDataSource();
-
-
   private tasks: taskModel[] = [];
 
   public taskToEditName: any = {};
   public taskToEditDescription: any = {};
+  public loggedIn: boolean = this.taskService.loggedInToggleTaskPage;
 
   constructor(private taskService: TaskService) {
   }
 
-  public loggedIn: boolean = this.taskService.loggedInToggleTaskPage;
-
   ngOnInit(): void {
     this.loadTasks();
-
   }
 
   private loadTasks(): void {
     this.taskService.getAllTasks().subscribe((tasks) => {
       let tasksFromUser: taskModel[] = [];
-      for (let task of tasks){
-        if (task.userId == this.taskService.loggedInUser.id){
+      for (let task of tasks) {
+        if (task.userId == this.taskService.loggedInUser.id) {
           tasksFromUser.push(task);
         }
       }
@@ -64,7 +59,6 @@ export class TaskComponent implements OnInit {
         console.log(user)
       })
     }
-
   }
 
   editTaskDescription(description: string, id: number, task: taskModel): void {
@@ -81,6 +75,4 @@ export class TaskComponent implements OnInit {
       })
     }
   }
-
-
 }

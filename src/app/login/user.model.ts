@@ -1,17 +1,17 @@
-export interface UserModel{
+export interface UserModel {
   userName: string;
-  pw:string
-  id:number
+  pw: string
+  id: number
 }
 
-export interface UserToPost{
+export interface UserToPost {
   userName: string;
-  pw:string
+  pw: string
 }
 
-export interface Login{
+export interface Login {
   userName: string;
-  pw:string
+  pw: string
 }
 
 

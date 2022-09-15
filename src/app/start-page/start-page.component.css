@@ -1,43 +1,44 @@
-h1{
+h1 {
   text-align: center;
   margin-top: 1em;
 }
 
-.addTask{
+.addTask {
   margin: 2em 20% 3em;
   width: 60%;
-  border: solid rgba(0,0,0,10%);
+  border: solid rgba(0, 0, 0, 10%);
   padding: 1em;
 }
-#saveButton{
+
+#saveButton {
   float: right;
 
 }
 
-.addTask h2{
+.addTask h2 {
   text-align: center;
   margin-bottom: 2em;
 }
 
-#toTasks{
+#toTasks {
   margin-right: 45%;
   margin-left: 45%;
   width: 10%;
 }
 
-#name{
+#name {
   margin-right: 2em;
 }
 
-a{
+a {
   color: black;
 }
 
-span{
+span {
   color: red;
 }
 
-#loginButton{
+#loginButton {
   margin-top: 2em;
   margin-right: 45%;
   margin-left: 45%;

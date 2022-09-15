@@ -1,5 +1,4 @@
-<div class="loginForm" *ngIf="taskService.loggedInToggleTaskPage == false else showLogOutButton" >
-
+<div class="loginForm" *ngIf="taskService.loggedInToggleTaskPage == false else showLogOutButton">
   <div id="userName">
     <label>Username</label>
     <input type="text" required="required" [(ngModel)]="username">
@@ -8,12 +7,11 @@
   <div id="password">
     <label>Password</label>
     <input type="password" required="required" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
-    [(ngModel)]="password">
+           [(ngModel)]="password">
   </div>
 
   <button id="loginButton" (click)="checkData(username,password)">Log in</button>
   <button id="registerButton" (click)="postData(username,password)">Click to register</button>
-
 </div>
 
 <ng-template #showLogOutButton>

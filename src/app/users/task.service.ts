@@ -1,9 +1,8 @@
-import {catchError, Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {taskModel, taskToPost} from "./taskModel";
-
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +10,7 @@ import {taskModel, taskToPost} from "./taskModel";
 export class TaskService {
   private userUrl = 'http://localhost:3000/tasks';
   public loggedInToggleTaskPage = false;
-  public loggedInUser:any = {};
-
+  public loggedInUser: any = {};
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})

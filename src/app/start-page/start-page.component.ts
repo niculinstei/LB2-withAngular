@@ -2,12 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {taskToPost} from "../users/taskModel";
 import {TaskService} from "../users/task.service";
 
-
 @Component({
   selector: 'app-start-page',
   templateUrl: './start-page.component.html',
   styleUrls: ['./start-page.component.css']
 })
+
 export class StartPageComponent implements OnInit {
   public taskToPost: taskToPost = {
     name: "",
@@ -15,7 +15,7 @@ export class StartPageComponent implements OnInit {
     userId: this.taskService.loggedInUser.id
   };
 
-  loggedInToggleStartPage:boolean = this.taskService.loggedInToggleTaskPage;
+  loggedInToggleStartPage: boolean = this.taskService.loggedInToggleTaskPage;
 
   constructor(private taskService: TaskService) {
   }
@@ -25,15 +25,13 @@ export class StartPageComponent implements OnInit {
 
   public saveUser(task: taskToPost) {
     console.log(task)
-    if (this.isNotValid(task)){
+    if (this.isNotValid(task)) {
       throw new Error("Input field can't be nothing")
-    } else{
+    } else {
       this.taskService.addTask(task).subscribe(user => {
         console.log(user);
       })
     }
-
-
   }
 
   isNotValid(task: taskToPost): boolean {

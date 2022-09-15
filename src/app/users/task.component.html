@@ -1,68 +1,67 @@
 <h1>My Tasks</h1>
-
 <div class="all" *ngIf="loggedIn == true else showLoginButton">
-<table mat-table [dataSource]="dataSource" style="text-align: center">
+  <table mat-table [dataSource]="dataSource" style="text-align: center">
 
-  <ng-container matColumnDef="taskName">
-    <th mat-header-cell *matHeaderCellDef>Task-Name</th>
-    <td mat-cell *matCellDef="let task">{{task.name}}</td>
-  </ng-container>
+    <ng-container matColumnDef="taskName">
+      <th mat-header-cell *matHeaderCellDef>Task-Name</th>
+      <td mat-cell *matCellDef="let task">{{task.name}}</td>
+    </ng-container>
 
-  <ng-container matColumnDef="editTaskName">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let task">
-      <input type="text" placeholder="Edit name" [(ngModel)]="taskToEditName[task.id]">
+    <ng-container matColumnDef="editTaskName">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let task">
+        <input type="text" placeholder="Edit name" [(ngModel)]="taskToEditName[task.id]">
 
-    </td>
-  </ng-container>
+      </td>
+    </ng-container>
 
-  <ng-container matColumnDef="editButton1" style="margin-right: 3em">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let task">
-      <button (click)="editTaskName(taskToEditName[task.id],task.id,task )">Save Name</button>
-    </td>
-  </ng-container>
+    <ng-container matColumnDef="editButton1" style="margin-right: 3em">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let task">
+        <button (click)="editTaskName(taskToEditName[task.id],task.id,task )">Save Name</button>
+      </td>
+    </ng-container>
 
-  <ng-container matColumnDef="taskDescription">
-    <th mat-header-cell *matHeaderCellDef class="tip">Description</th>
-    <td mat-cell *matCellDef="let task" class="tip"><p style="text-align: left">{{task.description}}</p></td>
-  </ng-container>
+    <ng-container matColumnDef="taskDescription">
+      <th mat-header-cell *matHeaderCellDef class="tip">Description</th>
+      <td mat-cell *matCellDef="let task" class="tip"><p style="text-align: left">{{task.description}}</p></td>
+    </ng-container>
 
-  <ng-container matColumnDef="editTaskDescription">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let task">
-      <input type="text" placeholder="Edit description" [(ngModel)]="taskToEditDescription[task.id]">
+    <ng-container matColumnDef="editTaskDescription">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let task">
+        <input type="text" placeholder="Edit description" [(ngModel)]="taskToEditDescription[task.id]">
 
-    </td>
-  </ng-container>
+      </td>
+    </ng-container>
 
-  <ng-container matColumnDef="editButton2">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let task">
-      <button (click)="editTaskDescription(taskToEditDescription[task.id], task.id, task)">Save description</button>
-    </td>
-  </ng-container>
+    <ng-container matColumnDef="editButton2">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let task">
+        <button (click)="editTaskDescription(taskToEditDescription[task.id], task.id, task)">Save description</button>
+      </td>
+    </ng-container>
 
-  <ng-container matColumnDef="taskId">
-    <th mat-header-cell *matHeaderCellDef>Id</th>
-    <td mat-cell *matCellDef="let task">{{task.id}}</td>
-  </ng-container>
+    <ng-container matColumnDef="taskId">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let task">{{task.id}}</td>
+    </ng-container>
 
-  <ng-container matColumnDef="deleteButton">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let task">
-      <button (click)="deleteTaskById(task.id)">X</button>
-    </td>
-  </ng-container>
+    <ng-container matColumnDef="deleteButton">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let task">
+        <button (click)="deleteTaskById(task.id)">X</button>
+      </td>
+    </ng-container>
 
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
 
-  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-  <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
-
-</table>
+  </table>
 </div>
 
-<ng-template  #showLoginButton>
-  <button id="loginButton" ><a routerLink="/Login" routerLinkActive="active" ariaCurrentWhenActive="page">Log In 🡆</a> </button>
+<ng-template #showLoginButton>
+  <button id="loginButton"><a routerLink="/Login" routerLinkActive="active" ariaCurrentWhenActive="page">Log In 🡆</a>
+  </button>
 </ng-template>
 

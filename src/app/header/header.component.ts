@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TaskService} from "../users/task.service";
 
 @Component({
@@ -8,9 +8,9 @@ import {TaskService} from "../users/task.service";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public taskService:TaskService) { }
+  constructor(public taskService: TaskService) {
+  }
 
   ngOnInit(): void {
   }
-
 }

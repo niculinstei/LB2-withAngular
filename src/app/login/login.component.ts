@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {StartPageComponent} from "../start-page/start-page.component";
 import {TaskService} from "../users/task.service";
-import {AppRoutingModule} from "../app-routing.module";
 import {Router} from "@angular/router";
-import {Login, UserModel, UserToPost} from "./user.model";
+import {UserModel, UserToPost} from "./user.model";
 import {LoginService} from "./login.service";
 
 
@@ -15,11 +13,10 @@ import {LoginService} from "./login.service";
 export class LoginComponent implements OnInit {
   public password: any = "";
   public username: any = "";
+  users: UserModel[] = [];
 
   constructor(public taskService: TaskService, private router: Router, private loginService: LoginService) {
   }
-
-  users: UserModel[] = [];
 
   ngOnInit(): void {
     console.log("component")
@@ -47,7 +44,6 @@ export class LoginComponent implements OnInit {
   }
 
   public postData(userName: string, pw: string): void {
-
     if (this.validatePassword(pw)) {
       let userToPost: UserToPost = {
         userName: userName,
@@ -62,7 +58,6 @@ export class LoginComponent implements OnInit {
     } else {
       alert("password should contain at least 8 chars, 1 special symbol, 1 Capital and 1 lower Case")
     }
-
   }
 
   private validatePassword(pw: string): boolean {

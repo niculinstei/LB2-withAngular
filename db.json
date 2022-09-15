@@ -1,34 +1,63 @@
 {
+  "users": [
+    {
+      "userName": "testUser",
+      "pw": "a1!",
+      "id": 1
+    }
+  ],
   "tasks": [
     {
       "name": "Niculin Steiner",
       "description": "halloanjd",
-      "id": 1
-    },
-    {
-      "name": "Niculin Steiner",
-      "description": "halloanjd",
-      "id": 2
+      "id": 2,
+      "userId": 1
     },
     {
       "name": "joel ",
       "description": "nieri",
-      "id": 3
+      "id": 3,
+      "userId": 1
     },
     {
       "name": "asd",
       "description": "     ",
-      "id": 4
+      "id": 4,
+      "userId": 2
     },
     {
       "name": "asdfa",
       "description": " ",
-      "id": 5
+      "id": 5,
+      "userId": 1
     },
     {
       "name": "niculin",
       "description": "steiner",
-      "id": 6
+      "id": 6,
+      "userId": 2
+    },
+    {
+      "name": "asdf",
+      "description": "asdf",
+      "id": 7,
+      "userId": 2
+    },
+    {
+      "name": "FASDFAS",
+      "description": "ASDFASDF",
+      "userId": {
+        "userName": "testUser",
+        "pw": "a1!",
+        "id": 1
+      },
+      "id": 8
+    },
+    {
+      "name": "asdfasf",
+      "description": "fsdfasfd",
+      "userId": 1,
+      "id": 9
     }
   ]
 }

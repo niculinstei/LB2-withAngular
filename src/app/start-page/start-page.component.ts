@@ -11,7 +11,8 @@ import {TaskService} from "../users/task.service";
 export class StartPageComponent implements OnInit {
   public taskToPost: taskToPost = {
     name: "",
-    description: ""
+    description: "",
+    userId: this.taskService.loggedInUser.id
   };
 
   loggedInToggleStartPage:boolean = this.taskService.loggedInToggleTaskPage;
@@ -27,7 +28,7 @@ export class StartPageComponent implements OnInit {
     if (this.isNotValid(task)){
       throw new Error("Input field can't be nothing")
     } else{
-      this.taskService.addUser(task).subscribe(user => {
+      this.taskService.addTask(task).subscribe(user => {
         console.log(user);
       })
     }

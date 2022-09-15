@@ -3,6 +3,7 @@ import {TaskService} from "./task.service";
 import {taskModel} from "./taskModel";
 import {MatTableDataSource} from "@angular/material/table";
 
+
 @Component({
   selector: 'app-users',
   templateUrl: './task.component.html',
@@ -19,27 +20,34 @@ export class TaskComponent implements OnInit {
   public taskToEditName: any = {};
   public taskToEditDescription: any = {};
 
-  constructor(private userService: TaskService) {
+  constructor(private taskService: TaskService) {
   }
 
-  public loggedIn: boolean = this.userService.loggedInToggleTaskPage;
+  public loggedIn: boolean = this.taskService.loggedInToggleTaskPage;
 
   ngOnInit(): void {
-    this.loadUsers();
+    this.loadTasks();
 
   }
 
-  private loadUsers(): void {
-    this.userService.getAllUsers().subscribe((users) => {
-      this.dataSource.data = users;
+  private loadTasks(): void {
+    this.taskService.getAllTasks().subscribe((tasks) => {
+      let tasksFromUser: taskModel[] = [];
+      for (let task of tasks){
+        if (task.userId == this.taskService.loggedInUser.id){
+          tasksFromUser.push(task);
+        }
+      }
+      console.log(tasksFromUser);
+      this.dataSource.data = tasksFromUser;
       console.log(this.tasks);
     });
   }
 
-  deleteUserById(userId: number): void {
+  deleteTaskById(taskId: number): void {
     confirm("Wollen sie diesen Eintrag wirkich löschen?")
-    this.userService.deleteUserById(userId).subscribe(user => {
-      console.log(user)
+    this.taskService.deletTaskByID(taskId).subscribe(task => {
+      console.log(task)
     });
   }
 
@@ -47,11 +55,12 @@ export class TaskComponent implements OnInit {
     const taskToEdit: taskModel = {
       name: taskname,
       description: task.description,
-      id: id
+      id: id,
+      userId: this.taskService.loggedInUser
     }
     if (taskToEdit) {
       console.log(taskToEdit.name)
-      this.userService.updateUser(taskToEdit).subscribe(user => {
+      this.taskService.updateTask(taskToEdit).subscribe(user => {
         console.log(user)
       })
     }
@@ -62,11 +71,12 @@ export class TaskComponent implements OnInit {
     const taskToEdit: taskModel = {
       name: task.name,
       description: description,
-      id: id
+      id: id,
+      userId: this.taskService.loggedInUser
     }
     if (taskToEdit) {
       console.log(taskToEdit.description)
-      this.userService.updateUser(taskToEdit).subscribe(user => {
+      this.taskService.updateTask(taskToEdit).subscribe(user => {
         console.log(user)
       })
     }

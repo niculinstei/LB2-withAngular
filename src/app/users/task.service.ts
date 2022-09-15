@@ -11,6 +11,8 @@ import {taskModel, taskToPost} from "./taskModel";
 export class TaskService {
   private userUrl = 'http://localhost:3000/tasks';
   public loggedInToggleTaskPage = false;
+  public loggedInUser:any = {};
+
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -19,27 +21,27 @@ export class TaskService {
   constructor(private http: HttpClient) {
   }
 
-  public getAllUsers(): Observable<taskModel[]> {
+  public getAllTasks(): Observable<taskModel[]> {
     return this.http.get<taskModel[]>(this.userUrl).pipe(tap({
-      complete: () => console.log("fetchedUsers")
+      complete: () => console.log("fetchedTasks")
     }))
   }
 
-  addUser(user: taskToPost): Observable<taskToPost> {
+  addTask(task: taskToPost): Observable<taskToPost> {
     console.log("inmethod");
-    return this.http.post<taskToPost>(this.userUrl, user)
-      .pipe(tap((newUser: taskToPost) => console.log(`added tip w/ id=${newUser.name}`))
+    return this.http.post<taskToPost>(this.userUrl, task)
+      .pipe(tap((newTask: taskToPost) => console.log(`added task w/ id=${newTask.name}`))
       );
   }
 
-  deleteUserById(id: number): Observable<taskModel> {
+  deletTaskByID(id: number): Observable<taskModel> {
     const url = `${this.userUrl}/${id}`;
     return this.http.delete<taskModel>(url).pipe(
-      tap(_ => console.log(`deleted user id=${id}`))
+      tap(_ => console.log(`deleted task id=${id}`))
     );
   }
 
-  updateUser(user: taskModel): Observable<taskModel> {
+  updateTask(user: taskModel): Observable<taskModel> {
     console.log("in method2");
     return this.http.put<taskModel>(`${this.userUrl}/${user.id}`, user, this.httpOptions)
       .pipe(tap((newUser: taskModel) => console.log(`updated user w/ id=${newUser.name}`))

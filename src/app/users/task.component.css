@@ -1,0 +1,27 @@
+table{
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 3em;
+  width: 80%;
+  border: solid rgba(0,0,0,5%);
+}
+
+h1{
+  text-align: center;
+  margin-top: 1em;
+}
+
+#name{
+  margin-right: 3em;
+}
+
+#loginButton{
+  margin-top: 2em;
+  margin-right: 45%;
+  margin-left: 45%;
+  width: 10%;
+}
+
+#loginButton a {
+  color: black;
+}

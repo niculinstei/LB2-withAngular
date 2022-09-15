@@ -1,0 +1,24 @@
+<h1>Welcome to your personal taskmanager</h1>
+<div class="all" *ngIf="loggedInToggleStartPage == true else showLoginButton">
+<div class="addTask">
+  <h2>Add Task</h2>
+  <label for="name">name</label>
+  <input id="name" type="text" required="required"  [(ngModel)]="taskToPost.name">
+
+
+  <label for="description">description</label>
+  <input id="description" type="text" required="required" [(ngModel)]="taskToPost.description">
+
+  <button id="saveButton" (click)="saveUser(taskToPost)" >Save user</button>
+    <span *ngIf="(isNotValid(taskToPost))" class="error">
+   The boxes can't be empty.
+ </span>
+
+</div>
+
+<button id="toTasks"> <a routerLink="/MyTasks" routerLinkActive="active" ariaCurrentWhenActive="page">My Tasks 🡆</a> </button>
+</div>
+
+<ng-template  #showLoginButton>
+    <button id="loginButton" ><a routerLink="/Login" routerLinkActive="active" ariaCurrentWhenActive="page">Log In 🡆</a> </button>
+</ng-template>

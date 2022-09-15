@@ -1,6 +1,6 @@
 <h1>My Tasks</h1>
 
-<div class="all" *ngIf="loggedInToggleStartPage == true else showLoginButton">
+<div class="all" *ngIf="loggedIn == true else showLoginButton">
 <table mat-table [dataSource]="dataSource" style="text-align: center">
 
   <ng-container matColumnDef="taskName">

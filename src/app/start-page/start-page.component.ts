@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {taskToPost} from "../users/taskModel";
 import {TaskService} from "../users/task.service";
 
+
 @Component({
   selector: 'app-start-page',
   templateUrl: './start-page.component.html',
@@ -13,7 +14,7 @@ export class StartPageComponent implements OnInit {
     description: ""
   };
 
-  loggedInToggleStartPage:boolean = false;
+  loggedInToggleStartPage:boolean = this.taskService.loggedInToggleTaskPage;
 
   constructor(private taskService: TaskService) {
   }

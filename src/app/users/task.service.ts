@@ -4,12 +4,13 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {taskModel, taskToPost} from "./taskModel";
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
   private userUrl = 'http://localhost:3000/tasks';
-
+  public loggedInToggleTaskPage = false;
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -44,6 +45,4 @@ export class TaskService {
       .pipe(tap((newUser: taskModel) => console.log(`updated user w/ id=${newUser.name}`))
       );
   }
-
-
 }

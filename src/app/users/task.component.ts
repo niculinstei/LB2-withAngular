@@ -10,18 +10,19 @@ import {MatTableDataSource} from "@angular/material/table";
 })
 export class TaskComponent implements OnInit {
 
-  public loggedInToggleStartPage = false;
-  public columnsToDisplay = ['taskName', 'editTaskName','editButton1', 'taskDescription', 'editTaskDescription', 'editButton2', 'taskId', 'deleteButton']
+  public columnsToDisplay = ['taskName', 'editTaskName', 'editButton1', 'taskDescription', 'editTaskDescription', 'editButton2', 'taskId', 'deleteButton']
   dataSource = new MatTableDataSource();
+
 
   private tasks: taskModel[] = [];
 
   public taskToEditName: any = {};
-  public taskToEditDescription: any = {
-  };
+  public taskToEditDescription: any = {};
 
   constructor(private userService: TaskService) {
   }
+
+  public loggedIn: boolean = this.userService.loggedInToggleTaskPage;
 
   ngOnInit(): void {
     this.loadUsers();
@@ -43,28 +44,33 @@ export class TaskComponent implements OnInit {
   }
 
   editTaskName(taskname: string, id: number, task: taskModel): void {
-    const taskToEdit:taskModel = {
+    const taskToEdit: taskModel = {
       name: taskname,
       description: task.description,
       id: id
     }
-    if (taskToEdit){
+    if (taskToEdit) {
       console.log(taskToEdit.name)
-      this.userService.updateUser(taskToEdit).subscribe(user =>{console.log(user)})
+      this.userService.updateUser(taskToEdit).subscribe(user => {
+        console.log(user)
+      })
     }
 
   }
 
   editTaskDescription(description: string, id: number, task: taskModel): void {
-    const taskToEdit:taskModel = {
+    const taskToEdit: taskModel = {
       name: task.name,
       description: description,
       id: id
     }
-    if (taskToEdit){
+    if (taskToEdit) {
       console.log(taskToEdit.description)
-      this.userService.updateUser(taskToEdit).subscribe(user =>{console.log(user)})
+      this.userService.updateUser(taskToEdit).subscribe(user => {
+        console.log(user)
+      })
     }
   }
+
 
 }

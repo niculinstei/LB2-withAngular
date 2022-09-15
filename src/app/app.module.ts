@@ -6,7 +6,6 @@ import {TaskComponent} from './users/task.component';
 import {FormsModule} from '@angular/forms';
 import {MatTableModule} from "@angular/material/table";
 import {HeaderComponent} from './header/header.component';
-import {RouterModule} from "@angular/router";
 import {AppRoutingModule} from './app-routing.module';
 import { StartPageComponent } from './start-page/start-page.component';
 import { LoginComponent } from './login/login.component';
@@ -25,7 +24,6 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     FormsModule,
     MatTableModule,
-    RouterModule,
     AppRoutingModule
   ],
   providers: [],

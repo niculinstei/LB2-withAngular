@@ -1,11 +1,14 @@
 <div class="loginForm">
   <div id="userName">
     <label>Username</label>
-    <input type="text" required="required">
+    <input type="text" required="required" [(ngModel)]="username">
   </div>
 
   <div id="password">
     <label>Password</label>
-    <input type="password" required="required" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$">
+    <input type="password" required="required" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+    [(ngModel)]="password">
   </div>
+
+  <button id="loginButton" (click)="checkData(username,password)">Log in</button>
 </div>

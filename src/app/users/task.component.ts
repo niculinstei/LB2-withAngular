@@ -56,7 +56,7 @@ export class TaskComponent implements OnInit {
       name: taskname,
       description: task.description,
       id: id,
-      userId: this.taskService.loggedInUser
+      userId: this.taskService.loggedInUser.id
     }
     if (taskToEdit) {
       console.log(taskToEdit.name)
@@ -72,7 +72,7 @@ export class TaskComponent implements OnInit {
       name: task.name,
       description: description,
       id: id,
-      userId: this.taskService.loggedInUser
+      userId: this.taskService.loggedInUser.id
     }
     if (taskToEdit) {
       console.log(taskToEdit.description)

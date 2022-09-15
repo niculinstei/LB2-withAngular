@@ -3,7 +3,7 @@ import {StartPageComponent} from "../start-page/start-page.component";
 import {TaskService} from "../users/task.service";
 import {AppRoutingModule} from "../app-routing.module";
 import {Router} from "@angular/router";
-import {UserModel} from "./user.model";
+import {Login, UserModel, UserToPost} from "./user.model";
 import {LoginService} from "./login.service";
 
 
@@ -15,7 +15,6 @@ import {LoginService} from "./login.service";
 export class LoginComponent implements OnInit {
   public password: any = "";
   public username: any = "";
-
 
   constructor(public taskService: TaskService, private router: Router, private loginService: LoginService) {
   }
@@ -47,4 +46,33 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  public postData(userName: string, pw: string): void {
+
+    if (this.validatePassword(pw)) {
+      let userToPost: UserToPost = {
+        userName: userName,
+        pw: pw
+      }
+      this.loginService.postUser(userToPost).subscribe((user) => {
+        this.taskService.loggedInUser = user;
+      });
+      this.taskService.loggedInToggleTaskPage = true;
+      this.router.navigate(['/Menu'])
+      alert("succesful registred");
+    } else {
+      alert("password should contain at least 8 chars, 1 special symbol, 1 Capital and 1 lower Case")
+    }
+
+  }
+
+  private validatePassword(pw: string): boolean {
+    var re = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$");
+    return re.test(pw);
+  }
+
+  public logOut() {
+    this.taskService.loggedInUser = {};
+    this.taskService.loggedInToggleTaskPage = false;
+    this.router.navigate(['/Menu'])
+  }
 }

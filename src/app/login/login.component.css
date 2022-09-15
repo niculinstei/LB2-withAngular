@@ -1,14 +1,18 @@
-.loginForm{
+.loginForm {
+  margin-top: 2em;
+  height: auto;
   width: 40%;
   margin-right: 30%;
   margin-left: 30%;
   text-align: center;
-  padding: 0;
+  padding: 1em;
+  border: solid rgba(0, 0, 0, 10%);
 }
 
 #password input {
   width: 70%;
 }
+
 #password label {
   width: 28%;
   margin-right: 2%;
@@ -17,18 +21,32 @@
 #userName input {
   width: 70%;
 }
+
 #userName label {
   width: 28%;
   margin-right: 2%;
 }
 
-#userName{
-  margin-top: 2em;
+#userName {
+  margin-top: 1em;
   margin-bottom: 1em;
 }
 
-#loginButton{
+#loginButton {
   margin-top: 2em;
+  float: right;
+}
+
+#registerButton {
+  margin-top: 2em;
+  float: left;
+}
+
+#logoutButton{
+  width: 20%;
+  margin-top: 2em;
+  margin-right: 40%;
+  margin-left: 40%;
 }
 
 

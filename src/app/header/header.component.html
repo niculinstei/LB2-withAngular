@@ -3,7 +3,10 @@
     <ul>
       <li><a routerLink="/Menu" routerLinkActive="active" ariaCurrentWhenActive="page">Menu</a></li>
       <li><a routerLink="/MyTasks" routerLinkActive="active" ariaCurrentWhenActive="page">My Tasks</a></li>
-      <li><a routerLink="/Login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a></li>
+      <li><a routerLink="/Login" routerLinkActive="active" ariaCurrentWhenActive="page"><p
+        *ngIf="taskService.loggedInToggleTaskPage == false else showLogOut">Login</p>
+        <ng-template #showLogOut><p>Logout</p></ng-template>
+      </a></li>
 
     </ul>
   </nav>

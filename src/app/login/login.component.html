@@ -1,4 +1,5 @@
-<div class="loginForm">
+<div class="loginForm" *ngIf="taskService.loggedInToggleTaskPage == false else showLogOutButton" >
+
   <div id="userName">
     <label>Username</label>
     <input type="text" required="required" [(ngModel)]="username">
@@ -11,4 +12,12 @@
   </div>
 
   <button id="loginButton" (click)="checkData(username,password)">Log in</button>
+  <button id="registerButton" (click)="postData(username,password)">Click to register</button>
+
 </div>
+
+<ng-template #showLogOutButton>
+  <button id="logoutButton" (click)="logOut()">LogOut</button>
+</ng-template>
+
+

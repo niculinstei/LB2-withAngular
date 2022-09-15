@@ -1,0 +1,28 @@
+.loginForm{
+  width: 40%;
+  margin-right: 30%;
+  margin-left: 30%;
+  text-align: center;
+  padding: 0;
+}
+
+#password input {
+  width: 70%;
+}
+#password label {
+  width: 28%;
+  margin-right: 2%;
+}
+
+#userName input {
+  width: 70%;
+}
+#userName label {
+  width: 28%;
+  margin-right: 2%;
+}
+
+#userName{
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
